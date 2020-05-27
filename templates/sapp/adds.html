@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+{% extends 'svapp/a&t.html' %}
+{% load staticfiles %}
+{% block body_block %}
+<head>
+	<meta charset="utf-8">
+	<title>SV Colleges</title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="{% static "sapp/css/montserrat-font.css" %}">
+	<link rel="stylesheet" type="text/css" href="{% static "sapp/fonts/material/css/material-design-iconic-font.min.css" %}">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="{% static "sapp/css/q.css"  %}">
+</head>
+
+	<div class="page-content">
+		<div class="form-v10-content">
+			<form class="form-detail"  method="post" id="myform">
+				{% csrf_token %}
+				<div class="form-left">
+					<h2>Add Student</h2>
+          <div class="form-row">
+            <input type="text" name="username" class="" id="Student Name" placeholder="Student Name" required>
+          </div>
+          <div class="form-row">
+            <input type="text" name="rollnumber" class="Roll Number" id="Roll Number" placeholder="Roll Number" required>
+          </div>
+					<div class="form-group">
+						<div class="form-row form-row-3">
+							<select name="year" required>
+							    <option disabled="disabled" selected="selected">Year</option>
+									<option name="1st">1st</option>
+							    <option name="2nd">2nd</option>
+							    <option name="3rd">3rd</option>
+									<option name="4th">4th</option>
+									<option name="5th">5th</option>
+									<option name="6th">6th</option>
+							</select>
+							<span class="select-btn">
+							  	<i class="zmdi zmdi-chevron-down"></i>
+							</span>
+						</div>
+					<div class="form-row form-row-4">
+						<select name="branch" required>
+						    <option disabled="disabled" selected="selected">Branch</option>
+								<option name="M.C.A">M.C.A</option>
+						    <option name="M.B.A">M.B.A</option>
+						    <option name="E.C.E">E.C.E</option>
+								<option name="E.E.E">E.E.E</option>
+								<option name="C.S.E">C.S.E</option>
+								<option name="CIVIL">CIVIL</option>
+								<option name="IT">IT</option>
+						</select>
+						<span class="select-btn">
+						  	<i class="zmdi zmdi-chevron-down"></i>
+						</span>
+					</div>
+				</div>
+          <div class="form-group">
+						<div class="form-row form-row-3">
+            <select name="section" required>
+                <option disabled="disabled" selected="selected">Section</option>
+                <option name="Section A">Section A</option>
+                <option name="Section B">Section B</option>
+                <option name="Section C">Section C</option>
+                <option name="Section D">Section D</option>
+            </select>
+            <span class="select-btn">
+						  	<i class="zmdi zmdi-chevron-down"></i>
+						</span>
+          </div>
+						<div class="form-row form-row-4">
+						<select name="gender" required>
+              <option disabled="disabled" selected="selected">Gender</option>
+              <option name="Male">Male</option>
+              <option name="Female">Female</option>
+              <option name="Others">Other</option>
+						</select>
+						<span class="select-btn">
+								<i class="zmdi zmdi-chevron-down"></i>
+						</span>
+					</div>
+				</div>
+					<div class="form-row">
+						<input type="number" name="phone" class="phone" id="Phone" placeholder="Phone" required>
+					</div>
+					<div class="form-row">
+						<input type="email" name="email" class="email" id="Email" placeholder="Email" required>
+					</div>
+          <div class="form-row">
+						<input type="password" name="password" class="password" id="password" placeholder="Password" required>
+					</div>
+					<div class="form-row">
+						<input type="password" name="password1" class="password" id="password" placeholder="Confirm Password" required>
+					</div>
+					{% for message in messages %}
+					<div class="alert {{ message.tags }} alert-dismissible" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						{{ message }}
+						</div>
+						{% endfor %}
+					<div class="p-t-20">
+					<button class="btn btn--radius btn--green" type="submit">ADD</button>
+				</div>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}

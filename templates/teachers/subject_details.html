@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% extends 'svapp/a&t.html' %}
+{% load staticfiles %}
+
+{% block body_block %}
+<section>
+	<head>
+		<title>Student Deatils</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% include 'cdn.html' %}
+	</head>
+
+	<body>
+	  <div class="container" align='center' style="margin-bottom:70px; margin-top:60px;">
+	  <h1 style="color:navy;"> Subjects Details</h1>
+	  </div>
+
+		<div class="container" style="margin-bottom:70px;">
+	   <table class="table table-hover">
+			 {% if subject_list %}
+	     <thead align="center">
+	       <tr>
+					<th>Subject Name</th>
+          <th>Subject Color</th>
+					<th>Subject Update </th>
+          <th>Subject Delete </th>
+	       </tr>
+	     </thead>
+
+	     {% for subject in subject_list %}
+	     <tbody style="text-transform: capitalize;" align="center">
+	       <tr>
+					 <td>{{subject.name}}</td>
+           <td>{{subject.color}}</td>
+					 <td>	<a class="btn btn--radius btn-outline-info btn-md" href="/subupdate/{{subject.id}}">Update</a> </td>
+					 <td>	<a class="btn btn--radius btn-outline-secondary btn-md" href="/subdelete/{{subject.id}}">Delete</a> </td>
+	       </tr>
+	     </tbody>
+	     {% endfor %}
+			 {% else %}
+			 <p>no subjects found</p>
+			 {% endif %}
+
+	   </table>
+	 </div>
+</body>
+</section>
+{% endblock %}

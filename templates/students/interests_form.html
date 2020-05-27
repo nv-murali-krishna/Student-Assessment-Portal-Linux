@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% extends 'sapp/write.html' %}
+{% load staticfiles %}
+{% block content %}
+{% load crispy_forms_tags %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  {% include 'cdn.html' %}
+  </head>
+<body>
+  <div class="container" align='center' style="margin-top:20px;">
+  <h2 style="color:navy; padding-top:40px;"><img class="author_img rounded-circle" src="{% static "images/svce2.png" %}" >  SV College of Engineering </h2>
+  <p>   Education For Better Society</p>
+  </div>
+  {% include 'messages.html' %}
+  <div class="container" style="margin-top:50px;">
+    <div class="jumbotron">
+      <h2 class="mb-3">Select your Subjects</h2>
+      <form method="post" novalidate>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn--radius btn-outline-success">Save</button>
+        <a href="{% url 'quiz_list' %}" class="btn btn--radius btn-outline-secondary">Nevermind</a>
+      </form>
+</div>
+</div>
+</body>
+</html>
+{% endblock %}

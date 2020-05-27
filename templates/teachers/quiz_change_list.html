@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% extends 'svapp/a&t.html' %}
+{% load staticfiles %}
+{% block body_block %}
+{% load crispy_forms_tags %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+  {% include 'cdn.html' %}
+  </head>
+<body>
+{% include 'messages.html' %}
+
+<div class="container" style="margin-bottom:100px;">
+  <h2 style="margin-bottom:60px;">Assessments Results:</h2>
+  <div class="row">
+  {% for quiz in quizzes %}
+  <div class="col-sm-6">
+    <div class="card" style="margin-bottom:30px;">
+      <div class="card-body">
+        <h2 class="card-title" style="font-size:2.0rem; color:navy;"><a href="{% url 'quiz_change' quiz.pk %}">{{ quiz.name }}</a></h2>
+        <h5 class="card-title">Subject: {{ quiz.subject.get_html_badge }}</h5>
+        <h5 class="card-title">Questions: {{ quiz.questions_count }}</h5>
+        <h5 class="card-title">Taken: {{ quiz.taken_count }}</h5>
+      <div align="right">
+        <a href="{% url 'quiz_results' quiz.pk %}" role="button" class="btn btn--radius btn-info btn-md">View results</a>
+      </div>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+    <h2 class="bg-light text-center font-italic" colspan="5">You haven't created any Assessment yet.</h2>
+  {% endfor %}
+</div>
+</div>
+  </body>
+</html>
+{% endblock %}

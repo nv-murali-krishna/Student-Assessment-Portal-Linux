@@ -1,0 +1,24 @@
+# pip3 freeze > requirements.txt
+
+Collecting requirements.txt
+
+first we need to install all the requirements by using bellow command
+
+1)pip3 install -r requirements.txt
+
+Next in python shell to run this commands :
+
+1) python3 manage.py makemigrations
+
+2) python3 manage.py migrate
+
+3) python3 manage.py createsuperuser
+
+NOTE:
+ Add to Settings ALLOWED_HOSTS 0.0.0.0 (or) 127.0.0.1
+
+4) python3 manage.py runserver 0.0.0.0:8000
+            (or)
+5) python3 manage.py runserver
+
+here 'py' mean's 'python', we can use both 'py' and 'python' also.

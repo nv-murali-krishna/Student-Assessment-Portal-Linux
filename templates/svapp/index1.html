@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Student Assessment Portal</title>
+  <link rel="icon" href="{% static "images/svce2.png" %}" type="image/png">
+
+  <link rel="stylesheet" href="{% static "css/master.css" %}">
+  <link rel="stylesheet" href="{% static "vendors/bootstrap/bootstrap.min.css" %}">
+  <link rel="stylesheet" href="{% static "vendors/fontawesome/css/all.min.css"%}">
+  <link rel="stylesheet" href="{% static "vendors/themify-icons/themify-icons.css"%}">
+  <link rel="stylesheet" href="{% static "vendors/linericon/style.css"%}">
+  <link rel="stylesheet" href="{% static "vendors/owl-carousel/owl.theme.default.min.css"%}">
+  <link rel="stylesheet" href="{% static "vendors/owl-carousel/owl.carousel.min.css"%}">
+
+  <link rel="stylesheet" href="{% static "css/style.css"%}">
+
+</head>
+<body >
+  <!--================Header Menu Area =================-->
+  <header class="header_area">
+    <div class="main_menu">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container box_1620">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <a class="navbar-brand" href="/index" ><h3 style="color:white;" ><img src="{% static "images/svce3.png" %}" > Student Assessment Portal</h3></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+            <ul class="nav navbar-nav menu_nav justify-content-end">
+              <li class="nav-item active"><a class="nav-link" href="/index">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="/adm">Admin</a></li>
+              <li class="nav-item"><a class="nav-link" href="/teacher">Teacher</a>
+              <li class="nav-item"><a class="nav-link" href="/student">Student</a></li>
+              <li class="nav-item submenu dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                  aria-expanded="false">Register</a>
+                <ul class="dropdown-menu">
+                  <li class="nav-item"><a class="nav-link" href="/treg">Teacher Reg</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/sreg">Student Reg</a></li>
+                </ul>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+              <!-- <li class="nav-item submenu dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                  aria-expanded="false">Login</a>
+                <ul class="dropdown-menu">
+                  <li class="nav-item"><a class="nav-link" href="/tlog">Teacher Login</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/slog">Student Login</a></li>
+                </ul>
+              </li> -->
+            </ul>
+            <!-- <ul class="navbar-right">
+            <li class="nav-item"><a class="button button-light" href="/log" style="color:white;">Login</a></li>
+            </ul> -->
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <!--================Header Menu Area =================-->
+
+
+  <main class="side-main">
+    <!--================ Hero sm Banner start =================-->
+    <section class="hero-banner mb-30px">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+            <div class="hero-banner__img">
+              <img class="img-fluid" src="{% static "images/14.png" %}" style="height:389px; width:62%; margin-left:70px; "alt="">
+            </div>
+          </div>
+          <div class="col-lg-5 pt-5">
+            <div class="hero-banner__content">
+              <p style="font-size:35px;">Designing Question Paper & Student Assessment Portal</p>
+              <p style="font-size:20px;">"Nothing is impossible, The word itself says I'm Possible... So All The Best."</p>
+              <a class="button bg" href="http://svce.edu.in/">SV Colleges Info</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--================ Hero sm Banner end =================-->
+
+  {% block body_block %}
+
+  {% endblock %}
+
+  <!-- ================ start footer Area ================= -->
+  <footer class="footer-area section-gap">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-2 col-sm-6 mb-4 mb-xl-0 single-footer-widget ">
+          <h4>Social Media</h4>
+          <ul>
+            <li><a href="https://www.facebook.com/SVCETPT/"><strong>Face Book</strong> </a></li>
+            <li><a href="https://www.youtube.com/user/SVColleges"><strong> Youtube</strong></a></li>
+            <li><a href="https://www.linkedin.com/school/sri-venkateswara-college-of-engineering-tirupati/"><strong>Linkedin</strong></a></li>
+            <li><a href="https://twitter.com/https://twitter.com/svce_tirupati"><strong>Twitter</strong></a></li>
+          </ul>
+        </div>
+
+        <div class="col-xl-2 col-sm-6 mb-4 mb-xl-0 single-footer-widget">
+          <h4>Courses</h4>
+          <ul>
+            <li><a href="#">M.C.A</a></li>
+            <li><a href="#">M.B.A</a></li>
+            <li><a href="#">B.TECH</a></li>
+            <li><a href="#">M.TECH</a></li>
+          </ul>
+        </div>
+        <div class="col-xl-2 col-sm-6 mb-4 mb-xl-0 single-footer-widget">
+          <h4>Address</h4>
+          <ul>
+            <li><a href="http://svce.edu.in/">SV Colleges</a></li>
+            <li><a href="#">Karakambadi Road, Opp. LIC Trining Center, Tirupati-517507</a></li>
+            <li><a href="#">Phone:0877 2285992</a></li>
+            <li><a href="#">svce@svcolleges.edu.in</a></li>
+          </ul>
+        </div>
+        <div class="col-xl-2 col-sm-6 mb-4 mb-xl-0 single-footer-widget">
+          <h4></h4>
+          <ul>
+
+          </ul>
+        </div>
+        <div class="col-xl-2 col-sm-6 mb-4 mb-xl-0 single-footer-widget">
+          <h4>Murali Krishna</h4>
+          <ul>
+            <li><img class="author_img rounded-circle" src="{% static "images/Krishna14.png" %}"alt=""></li>
+          </ul>
+        </div>
+        <div class="col-xl-2 col-sm-6 mb-4 mb-xl-0 single-footer-widget">
+          <h4>Information</h4>
+          <ul>
+            <li><a href="#">17BF1F0065</a></li>
+            <li><a href="#">murali9177056054@gmail.com</a></li>
+            <li><a href="#">9177056054</a></li>
+            <li><a href="#">1-72,Narayana Puram</a></li>
+            <li><a href="#">Sri Kalahasti,Chittor</a></li>
+            <li><a href="#">517640</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom row align-items-center text-center text-lg-left">
+        <p class="footer-text m-0 col-lg-8 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This Website is made with by <a href="https://www.linkedin.com/in/n-v-murali-krishna-0742a0143/" target="_blank">N V Murali Krishna</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+      <div class="col-lg-4 col-md-12 text-center text-lg-right">
+        <a href="https://www.facebook.com/profile.php?id=100009507136031/"><i style="color:white;" class="ti-facebook"></i></a>&nbsp&nbsp&nbsp
+        <a href="https://twitter.com/subha_krishna5"><i style="color:white;" class="ti-twitter-alt"></i></a>&nbsp&nbsp&nbsp
+        <a href="https://web.skype.com/"><i style="color:white;" class="ti-skype"></i></a>&nbsp&nbsp&nbsp
+        <a href="https://github.com/SUBHAMURALIKRISHNA"><i style="color:white;" class="fab fa-github"></i></a>&nbsp&nbsp&nbsp
+        <a href="https://www.linkedin.com/in/n-v-murali-krishna-0742a0143/"><i style="color:white;" class="ti-linkedin"></i></a>&nbsp&nbsp&nbsp
+      </div>
+      </div>
+    </div>
+  </footer>
+  <!-- ================ End footer Area ================= -->
+
+  <script src="{% static "vendors/jquery/jquery-3.2.1.min.js" %}"></script>
+  <script src="{% static "vendors/bootstrap/bootstrap.bundle.min.js" %}"></script>
+  <script src="{% static "vendors/owl-carousel/owl.carousel.min.js" %}"></script>
+  <script src="{% static "js/jquery.ajaxchimp.min.js" %}"></script>
+  <script src="{% static "js/mail-script.js" %}"></script>
+  <script src="{% static "js/main.js" %}"></script>
+</body>
+</html>

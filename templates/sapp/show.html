@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+{% extends 'svapp/a&t.html'%}
+{% load staticfiles %}
+{% block body_block %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Show Questions</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  </head>
+  <body>
+    <!--================ Difficulty section start =================-->
+ <section class="section-margin">
+  <div class="container">
+    <div class="section-intro pb-85px text-center">
+      <h2 class="section-intro__title">Choose Your Difficulty</h2>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+        <div class="card text-center card-pricing">
+          <div class="card-pricing__header">
+            <h1 class="card-pricing__price">Easy</h1><br>
+              <p>Questions List</p>
+          </div>
+          <ul class="card-pricing__list">
+            <li><i class="ti-check"></i>Subjects..</li>
+            <li><i class="ti-check"></i>General...</li>
+            <li><i class="ti-check"></i>Topics....</li>
+          </ul>
+          <div class="card-pricing__footer">
+            <a class="button button-light" type="submit" id="easy" href="/easy">Show</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+        <div class="card text-center card-pricing">
+          <div class="card-pricing__header">
+            <h1 class="card-pricing__price">Medium</h1><br>
+              <p>Questions List</p>
+          </div>
+          <ul class="card-pricing__list">
+            <li><i class="ti-check"></i>Subjects..</li>
+            <li><i class="ti-check"></i>General...</li>
+            <li><i class="ti-check"></i>Topics....</li>
+          </ul>
+          <div class="card-pricing__footer">
+            <a class="button button-light" type="submit" id="medium" href="/medium">Show</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+        <div class="card text-center card-pricing">
+          <div class="card-pricing__header">
+            <h1 class="card-pricing__price">Hard</h1><br>
+              <p>Questions List</p>
+          </div>
+          <ul class="card-pricing__list">
+            <li><i class="ti-check"></i>Subjects..</li>
+            <li><i class="ti-check"></i>General...</li>
+            <li><i class="ti-check"></i>Topics....</li>
+          </ul>
+          <div class="card-pricing__footer">
+            <a class="button button-light" type="submit" id="hard" href="/hard">Show</a>
+          </div>
+        </div>
+  </div>
+</section>
+<!--================ Difficulty section end =================-->
+
+  {% block content %}
+
+  {% endblock %}
+  <script>
+
+    $(document).on('submit','#easy',function(e){
+         e.preventDefault();
+          $.ajax({
+               type:"POST",
+                url:"/easy",
+
+            success: function(){
+              alert(success);
+
+           }
+       });
+     });
+</script>
+<script>
+
+  $(document).on('submit','#medium',function(e){
+       e.preventDefault();
+        $.ajax({
+             type:"POST",
+              url:"/medium",
+
+          success: function(){
+            alert(success);
+
+         }
+     });
+   });
+</script>
+<script>
+
+  $(document).on('submit','#hard',function(e){
+       e.preventDefault();
+        $.ajax({
+             type:"POST",
+              url:"/hard",
+
+          success: function(){
+            alert(success);
+
+         }
+     });
+   });
+</script>
+  </body>
+</html>
+{% endblock %}

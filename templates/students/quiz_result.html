@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+{% extends 'sapp/write.html' %}
+{% load staticfiles %}
+{% block body_block %}
+{% load crispy_forms_tags %}
+{% load quiz_extras %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static "plugins/fontawesome-free/css/all.min.css" %}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{% static "dist/css/adminlte.min.css" %}">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    {% include 'cdn.html' %}
+  </head>
+<body>
+  <div class="container" align='center' style="margin-top:20px;">
+  <h2 style="color:navy; padding-top:40px;"><img class="author_img rounded-circle" src="{% static "images/svce2.png" %}" >  SV College of Engineering </h2>
+  <p>   Education For Better Society</p>
+  </div>
+  {% include 'messages.html' %}
+  <div class="container" style="margin-top:50px;">
+    <h2 style="color:navy; margin-bottom:50px;">Assessments Results :</h2>
+    <div class="row">
+
+      <!-- /.col -->
+      <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+          <span class="info-box-icon bg-danger elevation-1"><i class="far fa-address-card"></i></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">User Name</span>
+            <span class="info-box-number">{{user.username}}</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+
+      <!-- /.col -->
+      <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+          <span class="info-box-icon bg-primary elevation-1"><i class="far fa-edit"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">Subject</span>
+            <span class="info-box-number">{{quiz.name}}</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+
+      <!-- /.col -->
+      <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+          <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-poll"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">Percentage</span>
+            <span class="info-box-number">{{percentage}}%</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+
+      <!-- /.col -->
+      <div class="col-12 col-sm-6 col-md-3" >
+        <div class="info-box mb-3">
+          <span class="info-box-icon bg-secondary elevation-1"><i class="fas fa-clipboard-list"></i></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">Total Marks</span>
+            <span class="info-box-number">{{user.student.score}}</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <div class="jumbotron">
+  <h2>{{quiz.name}} :</h2>
+  <!-- {{ quiz.subject.get_html_badge }} -->
+
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: {{percentage}}%" aria-valuenow="{{percentage}}" aria-valuemin="0" aria-valuemax="100">{{percentage}}%</div>
+  </div>
+  <hr>
+  {% for question in questions %}
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{forloop.counter}}. {{question.text}}</h5>
+      <table class="table table-bordered table-sm">
+        <thead><tr><th>Yours</th><th>Correct</th><th></th></tr></thead>
+        <tbody>
+          {% for opt in question.answers.all %}
+          {% marked_answer user opt as opt_marked %}
+          <tr>
+            <td style="width: 100px;{% if opt_marked == 'correct' %} background:green{% elif opt_marked == 'wrong' %} background:red{% endif %}"> </td>
+            <td style="width: 100px;{% if opt.is_correct %} background:green{% endif %}"></td>
+            <td>{{opt.text}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <br>
+  {% endfor %}
+</div>
+</div>
+<!-- jQuery -->
+<script src="{% static "plugins/jquery/jquery.min.js" %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static "plugins/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
+<!-- ChartJS -->
+<script src="{% static "plugins/chart.js/Chart.min.js" %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static "dist/js/adminlte.min.js" %}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{% static "dist/js/demo.js" %}"></script>
+<script src="{% static "dist/js/pages/dashboard3.js" %}"></script>
+</body>
+</html>
+{% endblock %}

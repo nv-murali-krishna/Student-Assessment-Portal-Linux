@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% extends 'svapp/a&t.html' %}
+{% load staticfiles %}
+{% block body_block %}
+{% load crispy_forms_tags crispy_forms_filters %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    {% include 'cdn.html' %}
+  </head>
+<body>
+  {% include 'messages.html' %}
+  <div class="container" style="margin-top:90px;">
+    <div class="jumbotron">
+    <h2 class="breadcrumb-item"><a href="{% url 'quiz_change' quiz.pk %}">{{ quiz.name }}</a></h2>
+  <h2 class="mb-3">{{ question.txt }}</h2>
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {{ formset.management_form }}
+    {{ form|crispy }}
+    <div class="card mb-3{% if formset.errors %} border-danger{% endif %}">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-8">
+            <strong>Answers</strong>
+          </div>
+          <div class="col-2">
+            <strong>Correct?</strong>
+          </div>
+          <div class="col-2">
+            <strong>Delete?</strong>
+          </div>
+        </div>
+      </div>
+      {% for error in formset.non_form_errors %}
+        <div class="card-body bg-danger border-danger text-white py-2">{{ error }}</div>
+      {% endfor %}
+      <div class="list-group list-group-flush list-group-formset">
+        {% for form in formset %}
+          <div class="list-group-item">
+            <div class="row">
+              <div class="col-8">
+                {% for hidden in form.hidden_fields %}{{ hidden }}{% endfor %}
+                {{ form.text|as_crispy_field }}
+                {% if form.instance.pk and form.text.value != form.instance.text %}
+                <p class="mb-0 mt-1"><small class="text-muted font-italic"><strong>Old answer:</strong> {{ form.instance.text }}</small></p>
+                {% endif %}
+              </div>
+              <div class="col-2">
+                {{ form.is_correct }}
+              </div>
+              <div class="col-2">
+                {% if form.instance.pk %}
+                  {{ form.DELETE }}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <p>
+      <small class="form-text text-muted">Your question may have at least <strong>2</strong> answers and maximum <strong>5</strong> answers. Select at least one correct answer.</small>
+    </p>
+    <button type="submit" class="btn btn--radius btn-outline-success">Save</button>
+    <a href="{% url 'quiz_change' quiz.pk %}" class="btn btn--radius btn--radius btn-outline-secondary" role="button">Nevermind</a>
+    <a href="{% url 'question_delete' quiz.pk question.pk %}" class="btn btn--radius btn-outline-danger float-right">Delete</a>
+  </form>
+</div>
+</div>
+</body>
+</html>
+{% endblock %}

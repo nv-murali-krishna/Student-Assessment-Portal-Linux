@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+{% extends 'svapp/a&t.html' %}
+{% load staticfiles %}
+
+{% block body_block %}
+<section>
+	<head>
+		<title>Student Deatils</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% include 'cdn.html' %}
+	</head>
+
+	<body>
+	  <div class="container" align='center' style="margin-bottom:70px; margin-top:60px;">
+	  <h1 style="color:navy;"> Teacher Details</h1>
+	  </div>
+		<div class="container">
+			<h3>User information :</h3>
+			<div class="col-md-6 col-md-8 col-12">
+			<form action="/search_t/" method="post" >
+				{% csrf_token %}
+				<div class="input-group mb-3">
+					<input  type="text" name="srh" class="form-control"  placeholder="Search" aria-label="Search">
+				<div class="input-group-append">
+				<button type="submit" class="btn btn-outline-info btn--radius btn-md my-0">Search</button>
+				</div>
+				</div>
+			</form>
+			<h5>Total Teachers: {{teachers}}</h5>
+			</div>
+		</div>
+		{% include 'messages.html' %}
+		<div class="container" style="margin-bottom:70px;">
+	   <table class="table table-hover">
+			 {% if teachers_list %}
+	     <thead align="center">
+	       <tr>
+					<th>Teacher name</th>
+ 					<th>Eamil</th>
+ 					<th>Branch</th>
+ 					<th>Gender</th>
+ 					<th>Phone</th>
+ 					<th>Update</th>
+ 					<th>Delete</th>
+	       </tr>
+	     </thead>
+
+	     {% for teacher in teachers_list %}
+	     <tbody style="text-transform: capitalize;" align="center">
+	       <tr>
+					 <td >{{teacher.username}}</td>
+					 <td>{{teacher.email}}</td>
+					 <td>{{teacher.branch}}</td>
+					 <td>{{teacher.gender}}</td>
+					 <td>{{teacher.phone}}</td>
+					 <td><a class="btn btn--radius btn-outline-success btn-md" href="/update_t/{{teacher.id}}">Update</a></td>
+					 <td>	<a class="btn btn--radius btn-outline-danger btn-md" href="/delt/{{teacher.id}}">Delete</a> </td>
+	       </tr>
+	     </tbody>
+	     {% endfor %}
+			 {% endif %}
+	   </table>
+	 </div>
+
+	 <div class="container" style="padding-bottom:100px;">
+	 <table class="table table-hover">
+		 {% if sr %}
+		 <h2>Users :</h2>
+		 <thead align="center">
+			 <tr>
+				<th>User Name</th>
+				<th>Eamil</th>
+				<th>Branch</th>
+				<th>Gender</th>
+				<th>Phone</th>
+				<th>Staff Status</th>
+				<th>Update</th>
+				<th>Delete</th>
+			 </tr>
+		 </thead>
+			 {% for user in sr %}
+			 <tbody style="text-transform: capitalize;" align="center">
+					<tr>
+						<td>{{user.username}}</td>
+						<td>{{user.email}}</td>
+						<td>{{user.branch}}</td>
+						<td>{{user.gender}}</td>
+						<td>{{user.phone}}</td>
+						<td>{{user.staff}}</td>
+						<td><a class="btn btn--radius btn-outline-success btn-md" href="/update_s/{{user.id}}">Update</a></td>
+						<td><a class="btn btn--radius btn-outline-danger btn-md" href="/dels/{{user.id}}">Delete</a> </td>
+					</tr>
+				</tbody>
+				{% endfor %}
+				{% endif %}
+			</table>
+	 </div>
+</body>
+</section>
+{% endblock %}

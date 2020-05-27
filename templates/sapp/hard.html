@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% extends 'svapp/a&t.html'%}
+{% load staticfiles %}
+{% block body_block %}
+<html lang="en" dir="ltr">
+<head>
+	<title>Student Deatils</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	{% include 'cdn.html' %}
+</head>
+
+<body>
+	<h2 align="center" style="margin-top:90px;">Hard Questions</h2>
+	<section class="section-margin">
+		<div class="container" align="center">
+		<div class="limiter" >
+      <table class="table">
+          <thead align="center">
+            <tr class="row100 head">
+              <th> Questions</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+    {% for q in questions_list %}
+		<tbody align="center">
+      <tr>
+        <td><h4>{{ q.text }}</h4></td>
+        <!-- <td> <a class="btn btn-outline-success btn--radius btn-md" href="{% url 'addquestions' %}">Add</a></td> -->
+				<td> <a class="btn btn-outline-danger btn--radius btn-md" href="{% url 'q_delete' q.id %}">Delete</a>
+        </td>
+      </tr>
+		</tbody>
+    {%endfor%}
+    </table>
+
+	</div>
+	</section>
+
+</body>
+</html>
+{% endblock %}

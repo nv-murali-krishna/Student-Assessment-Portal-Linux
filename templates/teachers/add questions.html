@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+{% extends 'svapp/a&t.html' %}
+{% load staticfiles %}
+{% block body_block %}
+{% load crispy_forms_tags %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+  {% include 'cdn.html' %}
+  </head>
+  <body>
+    {% include 'messages.html' %}
+    <div class="container" style="margin-bottom:100px;">
+			<h2 style="margin-bottom:50px;">Profile :</h2>
+	    <div class="row">
+	    <div class="col s12 m12 l12">
+	        <div class="card horizontal card-image profilecard z-depth-3 grey-text text-darken-3">
+						{% if user.profile %}
+	        <div class="card-image">
+	            <img class="author_img rounded-circle" src="{{user.profile.url}}" style="border-radius: 50%; height:120px; width:120px; margin-left:4rem; margin-top:2rem; margin-bottom:1rem">
+          </div>
+					{% else %}
+					<div class="card-image">
+	          <img class="author_img rounded-circle" src="{% static "L/images/svce6.png" %}" style="margin-left:4rem; margin-top:2rem; margin-bottom:1rem">
+	        </div>
+					{% endif %}
+      <div class="card-stacked">
+      <div class="card-content">
+      <div class="row">
+          <div class="col s8 l4 offset-s2" align="center">
+                  <h4 class="card-title" style="color:navy; text-transform: uppercase;">{{user.username}}</h4>
+                  <h5 class="card-title" style="text-transform: uppercase; color:navy;">{{user.branch}}</h5>
+              </div>
+              <div class="col s6 l2"  align="center">
+                  <h4 class="card-title" style="color:navy;">{{quizzes.count}}</h4>
+                  <span style="color:navy;">No of Assessments</span>
+              </div>
+							<div class="col s6 l2" align="center">
+                  <h4 class="card-title" style="color:navy;">{{user.email}}</h4>
+                  <span style="color:navy;">Email</span>
+              </div>
+              <div class="col s6 l2" align="center">
+                  <h4 class="card-title" style="color:navy;">{{user.phone}}</h4>
+                  <span style="color:navy;">Phone</span>
+              </div>
+          </div>
+      </div>
+      {% if user.admin == True %}
+      <div class="modal-footer">
+				<div align="right" style="margin:10px;">
+					<a class="btn btn--radius btn-success btn-md" href="{% url 'addsubjects' %}">Add Subjects</a>
+          <a class="btn btn--radius btn-info btn-md" href="{% url 'addprofile' user.id %}">Add Profile Pic</a>
+          <a class="btn btn--radius btn-warning btn-md" href="/upt/{{user.id}}">Profile Edit</a>
+          <a class="btn btn--radius btn-danger btn-md" href="/subdetails">Edit Subjects</a>
+        </div>
+		</div>
+      {% else %}
+      <div class="modal-footer">
+				<div align="right" style="margin:10px;">
+					<a class="btn btn--radius btn-success btn-md" href="/upt/{{user.id}}">Profile Edit</a>
+          <a class="btn btn--radius btn-default btn-md" href="{% url 'addprofile' user.id %}">Add Profile Pic</a>
+        </div>
+		</div>
+      {% endif %}
+  </div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="container" style="margin-bottom:150px;">
+	<h2 style="margin-bottom:50px;">Assessments :</h2>
+  <div class="col-md-6 col-md-8 col-12">
+  <form action="/search_a/" method="post" >
+    {% csrf_token %}
+    <div class="input-group mb-3">
+      <input  type="text" name="srh" class="form-control"  placeholder="Search Your Assessments" aria-label="Search">
+    <div class="input-group-append">
+    <button type="submit" class="btn btn-outline-info btn--radius btn-sm my-0">Search</button>
+    </div>
+    </div>
+  </form>
+  </div>
+	<div class="row">
+	{% for quiz in quizzes %}
+	<div class="card shadow-lg" style="width: 18rem; margin:41px;">
+  <div class="card-body">
+    <h3 class="card-title">{{ quiz.name }}</h3>
+		<h6 class="card-title">Subject: {{ quiz.subject.get_html_badge }} </h6>
+		<h6 class="card-title">Questions: {{ quiz.questions_count }}</h6>
+		<h6 class="card-title">Taken: {{ quiz.taken_count }}</h6>
+     <div align="right">
+       <!-- <a href="{% url 'question_add' quiz.pk %}" class="btn btn--radius btn-info btn-sm">Add Questions</a>  -->
+     	<a href="{% url 'quiz_change' quiz.pk %}" class="btn btn--radius btn-info btn-sm">Add Questions</a>
+     </div>
+  </div>
+	</div>
+	{% endfor %}
+</div>
+</div>
+
+<section class="section-margin">
+  {% if sr %}
+  <div class="container">
+    <div class="row">
+	{% for quiz in sr %}
+	<div class="card shadow-lg" style="width: 18rem; margin:41px;">
+  <div class="card-body">
+    <h3 class="card-title">{{ quiz.name }}</h3>
+		<h6 class="card-title">Subject: {{ quiz.subject.get_html_badge }} </h6>
+		<h6 class="card-title">Questions: {{ quiz.questions_count }}</h6>
+		<h6 class="card-title">Taken: {{ quiz.taken_count }}</h6>
+     <div align="right">
+     	<a href="{% url 'question_add' quiz.pk %}" class="btn btn--radius btn-info btn-sm">Add Questions</a>
+     </div>
+  </div>
+	</div>
+	{% endfor %}
+  </div>
+  </div>
+ {% endif %}
+</section>
+</body>
+</html>
+{% endblock %}

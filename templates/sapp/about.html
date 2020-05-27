@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+{% extends 'svapp/student1.html' %}
+{% load staticfiles %}
+{% block body_block %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>SV Assessment Portal</title>
+
+  <!--===============================================================================================-->
+  	<link rel="stylesheet" type="text/css" href="{% static "sapp/v1/bootstrap/css/bootstrap.min.css" %}">
+  <!--===============================================================================================-->
+  	<link rel="stylesheet" type="text/css" href="{% static "sapp/f1/font-awesome-4.7.0/css/font-awesome.min.css" %}">
+  <!--===============================================================================================-->
+  	<link rel="stylesheet" type="text/css" href="{% static "sapp/v1/animate/animate.css" %}">
+  <!--===============================================================================================-->
+  	<link rel="stylesheet" type="text/css" href="{% static "sapp/v1/select2/select2.min.css" %}">
+  <!--===============================================================================================-->
+  	<link rel="stylesheet" type="text/css" href="{% static "sapp/v1/perfect-scrollbar/perfect-scrollbar.css" %}">
+  <!--===============================================================================================-->
+  	<link rel="stylesheet" type="text/css" href="{% static "sapp/css/t2.css" %}">
+  	<link rel="stylesheet" type="text/css" href="{% static "sapp/css/t.css" %}">
+  <!--===============================================================================================-->
+{% include 'cdn.html' %}
+</head>
+<body>
+  <div class="container" align='center' style="margin-top:20px;">
+  <h2 style="color:navy; padding-top:40px;"><img class="author_img rounded-circle" src="{% static "images/svce2.png" %}" >  SV College of Engineering </h2>
+  <p>   Education For Better Society</p>
+  </div>
+
+ <section class="blog_area single-post-area section-margin--medium">
+   <div class="container">
+     <div class="row">
+         <!-- <div class="col-lg-8 posts-list"> -->
+
+             <div class="single-post row">
+                 <div class="col-lg-12">
+                     <div class="feature-img">
+                       <div class="view overlay zoom">
+                         <img class="img-fluid  z-depth-4 rounded" src="{% static "images/Home_2.jpg" %}" alt="">
+                       </div>
+                     </div>
+                 </div>
+                 <div class="col-lg-3  col-md-3">
+                     <div class="blog_info text-right">
+                         <div class="post_tag">
+                             <a href="#">Studies</a>
+                             <a class="active" href="#">Technology,</a>
+                             <a href="#">Sports</a>
+                             <a href="#">Lifestyle</a>
+                         </div>
+                         <ul class="blog_meta list">
+                             <li>
+                                 <a href="#">Murali Krishna
+                                     <i class="lnr lnr-user"></i>
+                                 </a>
+                             </li>
+                             <li>
+                                 <a href="#">5 Mar, 2020
+                                     <i class="lnr lnr-calendar-full"></i>
+                                 </a>
+                             </li>
+                             <li>
+                                 <a href="#">1.2M Views
+                                     <i class="lnr lnr-eye"></i>
+                                 </a>
+                             </li>
+                             <li>
+                                 <a href="#">06 Comments
+                                     <i class="lnr lnr-bubble"></i>
+                                 </a>
+                             </li>
+                         </ul>
+
+                     </div>
+                 </div>
+                 <div class="col-lg-9 col-md-9 blog_details">
+                     <h2>SV College of Engineering, Tirupati</h2>
+                     <p class="excert">
+                         At SV Colleges, we empower our students to achieve professional and personal success by providing a comprehensive and supportive educational experience, fostering critical thinking and encouraging lifelong learning.
+                     </p>
+                     <p>
+                        Our career-focused programs and services provide the knowledge and skills necessary to be successful in the fast-paced world. Irrespective of the course, we make sure that our students get the real-world learning experience that helps in achieving their future goals.
+                     </p>
+                     <p>
+                      <strong>SV Colleges</strong> is a community where - care, support and mutual respect flourishes. Our students are our first priority. We welcome you to join us and become yet another SV Colleges’ success story.
+                     </p>
+                 </div>
+                 <div class="col-lg-12">
+                     <div class="quotes">
+                      <strong>Council for Social Development </strong>(the umbrella organization of SV Colleges) was founded in 1981 based on the firm belief that education, especially higher education, provides a critical pathway to leadership development, economic progress, and social and political equality.
+                     </div>
+                     <div class="row">
+                         <div class="col-6">
+                             <img class="img-fluid" src="img/blog/post-img1.jpg" alt="">
+                         </div>
+                         <div class="col-6">
+                             <img class="img-fluid" src="img/blog/post-img2.jpg" alt="">
+                         </div>
+                     </div>
+                    <h2 style="padding-top:50px; padding-bottom:50px;">Colleges Data:</h2>
+                     <!-- <section class="section-margin"> -->
+                   		<div class="container" align="center">
+                   		<div class="limiter" >
+                         <table class="table">
+                             <thead align="center">
+                               <tr class="row100 head " style="background-color:#FFFFE0;">
+                                 <th> <h3>#</h3> </th>
+                                 <th><h3>Code</h3></th>
+                                 <th><h3>Our Institutions</h3></th>
+                                 <th><h3>Estd.</h3></th>
+                               </tr>
+                             </thead>
+                       		<tbody align="center">
+                            <tr>
+                              <td><h5>1</h5></td>
+                              <td><h5>SVCE</h5></td>
+                              <td><h5>SV College of Engineering, Tirupati</h5></td>
+                              <td><h5>2007</h5></td>
+                            </tr>
+                            <tr>
+                              <td><h5>2</h5></td>
+                              <td><h5>SVEC</h5></td>
+                              <td><h5>SV Engineering of College, Tirupati</h5></td>
+                              <td><h5>2019</h5></td>
+                            </tr>
+                            <tr>
+                              <td><h5>3</h5></td>
+                              <td><h5>SVDC</h5></td>
+                              <td><h5>SV Degree College, Kadapa</h5></td>
+                              <td><h5>1981</h5></td>
+                            </tr>
+                            <tr>
+                              <td><h5>4</h5></td>
+                              <td><h5>SVCK</h5></td>
+                              <td><h5>SV College of Engineering, Kadapa</h5></td>
+                              <td><h5>2016</h5></td>
+                            </tr>
+                       		</tbody>
+                           </table>
+                   	</div>
+                 </div>
+               <!-- </section> -->
+             </div>
+           <!-- </div> -->
+       <!-- </div> -->
+    </div>
+</section>
+
+<section class="section-margin">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-lg-3 mb-4 mb-md-0">
+        <div class="media contact-info">
+          <span class="contact-info__icon"><i class="ti-home"></i></span>
+          <div class="media-body">
+            <h3>SV Engineering Colleges-Tirupati</h3>
+            <p>Santa monica bullevard</p>
+          </div>
+        </div>
+        <div class="media contact-info">
+          <span class="contact-info__icon"><i class="ti-headphone"></i></span>
+          <div class="media-body">
+            <h3><a href="tel:454545654">00 (440) 9865 562</a></h3>
+            <p>Mon to Fri 9am to 6pm</p>
+          </div>
+        </div>
+        <div class="media contact-info">
+          <span class="contact-info__icon"><i class="ti-email"></i></span>
+          <div class="media-body">
+            <h3><a href="#">svce@svcolleges.edu.in</a></h3>
+            <p>Send us your query anytime!</p>
+          </div>
+        </div>
+      </div>
+      {% include 'sapp/Student_comments.html' %}
+      </div>
+  </div>
+</section>
+
+
+<!--===============================================================================================-->
+	<script src="{% static "sapp/v1/jquery/jquery-3.2.1.min.js" %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static "sapp/v1/bootstrap/js/popper.js" %}"></script>
+	<script src="{% static "sapp/v1/bootstrap/js/bootstrap.min.js" %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static "sapp/v1/select2/select2.min.js" %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static "sapp/v1/perfect-scrollbar/perfect-scrollbar.min.js" %}"></script>
+	<script>
+		$('.js-pscroll').each(function(){
+			var ps = new PerfectScrollbar(this);
+
+			$(window).on('resize', function(){
+				ps.update();
+			})
+		});
+
+
+	</script>
+<!--===============================================================================================-->
+	<script src="{% static "sapp/js/t.js" %}"></script>
+
+</body>
+</html>
+{% endblock %}

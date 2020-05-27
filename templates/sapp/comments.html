@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+{% extends 'svapp/a&t.html' %}
+{%load staticfiles%}
+{% block body_block %}
+<head>
+  <style media="screen">
+    body{
+    background:url("{% static "images/36.jpg" %}");
+    background-image: no-repeat;
+    background-image: cover;
+    }
+    h2{
+      color:navy;
+    }
+      .card{
+        padding-bottom:30px;
+        height: auto;
+        width: 60%;
+      }
+      .card-text{
+        margin-bottom: 10px;
+      }
+      .continer{
+        padding-left: 300px;
+        align-content: flex-end;
+      }
+      .btn-danger{
+        color: navy;
+      }
+      .card-header{
+        padding-bottom:10px;
+      }
+      .btn {
+        line-height: 38px;
+        display: inline-block;
+        padding: 0 20px;
+        cursor: pointer;
+        font-family: 'Montserrat', sans-serif;
+        color: #FFFFFF;
+        -webkit-transition: all 0.4s ease;
+        -o-transition: all 0.4s ease;
+        -moz-transition: all 0.4s ease;
+        transition: all 0.4s ease;
+        font-size: 15px;
+        font-weight: 500;
+        width: 120px;
+      }
+
+      .btn--radius {
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 20px;
+        border-radius:50%;
+      }
+
+      .btn--green {
+        background: navy;
+      }
+
+      .btn--green:hover {
+        background: blue;
+      }
+      .ti-trash {
+        padding-left:0px;
+        size:100px;
+        padding-bottom:25px;
+      }
+  </style>
+  <link rel="stylesheet" href="{% static "sapp/css/m1.css" %}">
+</head>
+
+<section class="section-margin">
+{% if comment_list %}
+<div class="continer">
+  <div class="row">
+  <div class="col-sm-6">
+    <h2>Teachers:</h2>
+    <div class="card shadow p-3 mb-5 bg-white rounded">
+      <div class="card-body">
+        {% for comment in comment_list %}
+        <h3 class="card-header" style="color:navy;">{{comment.username}} </h3>
+        <h4 class="card-title">{{comment.email}} </h4>
+        <h3 class="card-title">{{comment.subject}}</h3>
+        <p class="card-text">{{comment.message}}</p>
+        <div align="right">
+          {{comment.date}} &nbsp<a href="/delc/{{comment.id}}"><i style="color:navy;" class="fas fa-trash"></i></a>
+        </div>
+
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% if student_list %}
+  <div class="col-sm-6">
+    <h2>Students:</h2>
+    <div class="card shadow p-3 mb-5 bg-white rounded">
+      <div class="card-body">
+        {% for s_comment in student_list %}
+        <h3 class="card-header" style="color:navy;">{{s_comment.username}}</h3>
+        <h4 class="card-title">{{s_comment.rollnumber}}</h4>
+        <h3 class="card-title">{{s_comment.subject}}</h3>
+        <p class="card-text">{{s_comment.message}}</p>
+        <div align="right">
+          {{s_comment.date}} &nbsp<a href="/delsc/{{s_comment.id}}"><i style="color:navy;" class="fas fa-trash"></i></a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+{% endif %}
+{% endblock %}

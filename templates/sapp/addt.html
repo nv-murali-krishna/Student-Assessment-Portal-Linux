@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+{% extends 'svapp/a&t.html' %}
+{% load staticfiles %}
+{% block body_block %}
+<head>
+	<meta charset="utf-8">
+	<title>SV Colleges</title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="{% static "sapp/css/montserrat-font.css" %}">
+	<link rel="stylesheet" type="text/css" href="{% static "sapp/fonts/material/css/material-design-iconic-font.min.css" %}">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="{% static "sapp/css/q2.css"  %}">
+</head>
+
+	<div class="page-content">
+		<div class="form-v10-content">
+			<form class="form-detail" method="post" id="myform">
+				{% csrf_token %}
+				<div class="form-right">
+					<h2>Add Teacher</h2>
+          <div class="form-row">
+            <input type="text" name="username" class="" id="Name" placeholder="Teacher Name" required>
+          </div>
+					<div class="form-row">
+						<select name="branch" required>
+						    <option disabled="disabled" selected="selected">Branch</option>
+								<option name="M.C.A">M.C.A</option>
+						    <option name="M.B.A">M.B.A</option>
+						    <option name="E.C.E">E.C.E</option>
+								<option name="E.E.E">E.E.E</option>
+								<option name="C.S.E">C.S.E</option>
+								<option name="CIVIL">CIVIL</option>
+								<option name="IT">IT</option>
+						</select>
+						<span class="select-btn">
+						  	<i class="zmdi zmdi-chevron-down"></i>
+						</span>
+					</div>
+					<div class="form-row">
+						<select name="gender" required>
+              <option disabled="disabled" selected="selected">Gender</option>
+              <option name="Male">Male</option>
+              <option name="Female">Female</option>
+              <option name="Others">Other</option>
+						</select>
+						<span class="select-btn">
+								<i class="zmdi zmdi-chevron-down"></i>
+						</span>
+					</div>
+					<div class="form-row">
+						<input type="number" name="phone" class="Phone" id="Phone" placeholder="Phone" required>
+					</div>
+					<div class="form-row">
+						<input type="email" name="email" class="Email" id="Email" placeholder="Email" required>
+					</div>
+          <div class="form-row">
+						<input type="password" name="password" class="password" id="password" placeholder="Password" required>
+					</div>
+					<div class="form-row">
+						<input type="password" name="password1" class="password" id="password" placeholder="Confirm Password" required>
+					</div>
+					{% for message in messages %}
+					<div class="alert {{ message.tags }} alert-dismissible" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						{{ message }}
+						</div>
+						{% endfor %}
+					<div class="form-row-last">
+						<input type="submit" name="register" class="register" value="Add">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+<div class="col-md-8 col-lg-9">
+  <form method="post">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-lg-5">
+        <div class="form-group">
+          <input class="form-control" name="username" type="text" placeholder="Enter your name">
+        </div>
+        <div class="form-group">
+          <input class="form-control" name="rollnumber"  type="text" placeholder="Enter Rollnumber">
+        </div>
+        <div class="form-group">
+          <input class="form-control" name="subject"  type="text" placeholder="Enter Subject">
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="form-group">
+            <textarea type="text" class="form-control different-control w-100" name="message" cols="30" rows="5" placeholder="Enter Message"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="form-group text-center text-md-right mt-3">
+        <button type="submit" class="button button-contactForm">Send Message</button>
+      </div>
+    </form>
+  </div>
